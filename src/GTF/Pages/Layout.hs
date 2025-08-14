@@ -58,7 +58,7 @@ defaultLayoutWithMeta currentPath metadata pageContent = doctypehtml_ $ do
     siteCss
   body_ $ do
     header_ [class_ "site-header"] $ do
-      div_ [class_ "brand"] "~gtf"
+      div_ [class_ "brand"] "ἄπειροv"
       navbar currentPath
     div_ [class_ "top-container"]
       $ div_ [class_ "content-container"]

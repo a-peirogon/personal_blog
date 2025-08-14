@@ -16,10 +16,10 @@ navbar currentPath =
     div_ [class_ "nav-content"]
       $ foldMap
         mkMenuItem
-        [ ("home", "/")
-        , ("musings", "/musings")
-        , ("projects", "/projects")
-        , ("colophon", "/colophon")
+        [ ("inicio", "/")
+        , ("reflexiones", "/musings")
+        , ("proyectos", "/projects")
+        , ("acerca de", "/colophon")
         ]
  where
   mkMenuItem :: (Text, ByteString) -> Html ()

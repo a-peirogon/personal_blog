@@ -1,5 +1,5 @@
 {
-  
+
   inputs = {
     flake-parts.url = "github:hercules-ci/flake-parts";
     haskell-flake.url = "github:srid/haskell-flake";
@@ -26,9 +26,9 @@
         };
         packages = {
           djot.source = inputs'.nixpkgs.legacyPackages.fetchFromGitHub {
-            owner = "gfarrell";
+            owner = "jgm";
             repo = "djoths";
-            rev = "bad299275d650e71b7915ae6da4cfef6a869ab1a";
+            rev = "HEAD"; # puedes fijar un commit específico si deseas
             hash = "sha256-Ud+BhyifBnvQK7gPK5ruT3GHfIrZFSCVXmUjB7HhnNw=";
           };
         };

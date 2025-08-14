@@ -10,7 +10,7 @@ import GTF.Style.Nav qualified as Nav
 import GTF.Style.Projects qualified as Projects
 
 contentMaxWidth :: Size LengthUnit
-contentMaxWidth = px 500
+contentMaxWidth = px 600
 
 stylesheet :: Css
 stylesheet = do
@@ -19,7 +19,6 @@ stylesheet = do
     flexDirection row
     marginBottom $ em 1
     alignItems flexStart
-    justifyContent center
 
     ".brand" ? do
       fontSize (em 1.2)
@@ -60,9 +59,30 @@ stylesheet = do
     borderBottom (px 1) solid (rgba 255 255 255 0.3)
     textAlign center
 
-  -- (h1 <> h2 <> h3 <> h4) ? textAlign start
-  h1 ? do 
-    marginBottom (px 5)
+  (h1 <> h2 <> h3 <> h4) ? textAlign start
+  h1 ? fontSize (em 1.8)
+  h2 ? fontSize (em 1.4)
+  h3 ? fontSize (em 1.2)
+  h4 ? fontSize (em 1)
+
+  -- Body
+  body ? do
+    fontStyle normal
+    fontWeight normal
+    fontSize (pt 10)
+    lineHeight (unitless 1.3)
+    fontFamily ["ETBookRoman","warnock-pro","Palatino","Palatino Linotype","Palatino LT STD","Book Antiqua","Georgia","serif"] [serif]
+    position absolute
+    left (px 130)
+    width (px 550)
+    color (rgba 0 0 0 0.87)
+    fontSize (px 15)
+
+  ".table-of-contents" ? do
+    backgroundColor "#f8f8f8"
+    border 0 solid black
+
+
 
   main_ ? textAlign justify
 
@@ -77,10 +97,9 @@ stylesheet = do
     pre ? do
       overflowX scroll
 
-  header ? do
+  header |> ".subtitle" ? do
     fontSize $ em 0.9
     margin (em 0.1) 0 (em 0.1) 0
-    textAlign center
 
   Nav.stylesheet
   Lists.stylesheet

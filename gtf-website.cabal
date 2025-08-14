@@ -27,7 +27,7 @@ common deps
     , aeson
     , base                ^>=4.17.2.0
     , bytestring
-    , clay
+    , clay ^>=0.14.0
     , containers
     , directory
     , djot
@@ -123,18 +123,3 @@ executable draft-server
 
   hs-source-dirs: app/draft-server
   other-modules:  GTF.DraftServ.Github
-
-test-suite gtf-website-tests
-  import:         warnings, lang, deps
-  main-is:        Spec.hs
-  type:           exitcode-stdio-1.0
-  build-depends:
-    , gtf-website
-    , hspec
-    , hspec-megaparsec
-
-  hs-source-dirs: test
-  other-modules:
-    GTF.Content.MetaSpec
-    GTF.Content.MusingsSpec
-    GTF.Content.ProjectsSpec

@@ -1,5 +1,4 @@
 module GTF.Style.Lists (stylesheet) where
-
 import Clay
 import CommonPrelude ((<>))
 
@@ -8,25 +7,26 @@ stylesheet = do
   (ul <> ol) ? textAlign start
 
   ul # ".page-list" ? do
-    listStyleType none
+    listStyleType upperRoman
     padding (em 0) (em 0) (em 0) (em 0)
 
     li ? do
 
       lastChild & marginBottom none
 
-      before & content (stringContent "🖋 ")
+      -- before & content (stringContent "§ ")
 
-  ".table-of-contents" ** ol ? paddingLeft (em 1.2)
+    ".table-of-contents" ** ol ? paddingLeft (em 1.2)
 
-  ".table-of-contents" |> ol ? do
-    listStyleType decimal
+    ".table-of-contents" |> ol ? do
+      listStyleType decimal
 
     ol ? do
       listStyleType lowerAlpha
 
-      ol ? do
-        listStyleType lowerRoman
+    ol ? do
+      listStyleType lowerRoman
+
   body ? do
     a ? do
       textDecoration none

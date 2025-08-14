@@ -76,7 +76,6 @@ renderMusingContent (ParsedDoc m d) = article_ $ do
       humantime $ created m
       ", " <> toHtml (show $ wordcount d) <> " words"
   if toc m then div_ [class_ "table-of-contents"] $ renderToc $ generateToc d else mempty
-  hr_ mempty
   div_ [class_ "item-content"]
     . toHtmlRaw
     . toLazyByteString
