@@ -25,12 +25,14 @@ import GTF.Pages.Partials.TableOfContents (renderToc)
 import GTF.URL (UrlPath)
 import Lucid (Html, ToHtml (toHtml, toHtmlRaw))
 import Lucid.Html5
+import Debug.Trace (traceShow)
 
 musings :: [ParsedDoc Musing]
 musings =
-  sortOn
-    (Down . created . meta)
-    $(loadFilesTH (Proxy @Musing) "src/GTF/Pages/Musings/content" isDjot)
+  let loaded = $(loadFilesTH (Proxy @Musing) "src/GTF/Pages/Musings/content" isDjot)
+   in traceShow (map (title . meta) loaded) $
+        sortOn (Down . created . meta) loaded
+
 
 indexPage :: UrlPath -> Maybe (Html ())
 indexPage currentPath = Just $ defaultLayout currentPath "All Musings" $ do
@@ -75,6 +77,14 @@ renderMusingContent (ParsedDoc m d) = article_ $ do
     p_ [class_ "subtitle"] $ do
       humantime $ created m
       ", " <> toHtml (show $ wordcount d) <> " words"
+
+    -- Abstract
+    case abstract m of
+      Just absTxt -> p_ [class_ "abstract"] (toHtml absTxt)
+      Nothing     -> mempty
+
+  hr_ mempty
+
   if toc m then div_ [class_ "table-of-contents"] $ renderToc $ generateToc d else mempty
   div_ [class_ "item-content"]
     . toHtmlRaw

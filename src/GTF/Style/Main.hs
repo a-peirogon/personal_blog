@@ -19,6 +19,7 @@ stylesheet = do
     flexDirection row
     marginBottom $ em 1
     alignItems flexStart
+    fontSize (px 17)
 
     ".brand" ? do
       fontSize (em 1.2)
@@ -47,7 +48,7 @@ stylesheet = do
 
   div # ".content-container" ? do
     padding 0 (em 1) 0 (em 1)
-    maxWidth contentMaxWidth
+    -- maxWidth contentMaxWidth
     margin (px 0) auto (px 0) auto
 
   hr ? do
@@ -59,8 +60,11 @@ stylesheet = do
     borderBottom (px 1) solid (rgba 255 255 255 0.3)
     textAlign center
 
-  (h1 <> h2 <> h3 <> h4) ? textAlign start
-  h1 ? fontSize (em 1.8)
+  (h2 <> h3 <> h4) ? textAlign start
+  h1 ? do
+    textAlign center
+    fontSize (em 2)
+
   h2 ? fontSize (em 1.4)
   h3 ? fontSize (em 1.2)
   h4 ? fontSize (em 1)
@@ -72,17 +76,23 @@ stylesheet = do
     fontSize (pt 10)
     lineHeight (unitless 1.3)
     fontFamily ["ETBookRoman","warnock-pro","Palatino","Palatino Linotype","Palatino LT STD","Book Antiqua","Georgia","serif"] [serif]
-    position absolute
-    left (px 130)
-    width (px 550)
+    -- position absolute
+    margin (px 0) auto (px 0) auto
+    -- left (px 130)
+    maxWidth (px 600)
     color (rgba 0 0 0 0.87)
-    fontSize (px 15)
+    fontSize (px 16)
 
-  ".table-of-contents" ? do
-    backgroundColor "#f8f8f8"
-    border 0 solid black
+  ".abstract" ? do
+    fontStyle italic
 
+  blockquote ? do
+    border (px 1) solid (rgb 92 92 92)      -- #5c5c5c
+    padding (px 5) (px 5) (px 5) (px 5)
+    backgroundColor (rgb 248 248 248)       -- #f8f8f8
 
+  header ? do
+    textAlign center
 
   main_ ? textAlign justify
 

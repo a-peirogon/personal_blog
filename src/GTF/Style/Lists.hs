@@ -29,5 +29,5 @@ stylesheet = do
 
   body ? do
     a ? do
-      textDecoration none
-      color "#900"
+      textDecoration underline
+      color "#333"
